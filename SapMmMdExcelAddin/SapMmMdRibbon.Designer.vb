@@ -48,12 +48,16 @@
         Me.ButtonSapMaterialChange = Me.Factory.CreateRibbonButton
         Me.Group3 = Me.Factory.CreateRibbonGroup
         Me.ButtonSapMaterialPriceChange = Me.Factory.CreateRibbonButton
+        Me.Group4 = Me.Factory.CreateRibbonGroup
+        Me.ButtonSapSourceListRead = Me.Factory.CreateRibbonButton
+        Me.ButtonSapSourceListUpdate = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.ButtonLogon = Me.Factory.CreateRibbonButton
         Me.ButtonLogoff = Me.Factory.CreateRibbonButton
         Me.SapMmMd.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.Group3.SuspendLayout()
+        Me.Group4.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -61,6 +65,7 @@
         '
         Me.SapMmMd.Groups.Add(Me.Group1)
         Me.SapMmMd.Groups.Add(Me.Group3)
+        Me.SapMmMd.Groups.Add(Me.Group4)
         Me.SapMmMd.Groups.Add(Me.Group2)
         Me.SapMmMd.Label = "SAP MM Md"
         Me.SapMmMd.Name = "SapMmMd"
@@ -99,6 +104,27 @@
         Me.ButtonSapMaterialPriceChange.Name = "ButtonSapMaterialPriceChange"
         Me.ButtonSapMaterialPriceChange.ShowImage = True
         '
+        'Group4
+        '
+        Me.Group4.Items.Add(Me.ButtonSapSourceListRead)
+        Me.Group4.Items.Add(Me.ButtonSapSourceListUpdate)
+        Me.Group4.Label = "Source List"
+        Me.Group4.Name = "Group4"
+        '
+        'ButtonSapSourceListRead
+        '
+        Me.ButtonSapSourceListRead.Image = CType(resources.GetObject("ButtonSapSourceListRead.Image"), System.Drawing.Image)
+        Me.ButtonSapSourceListRead.Label = "Read Source List"
+        Me.ButtonSapSourceListRead.Name = "ButtonSapSourceListRead"
+        Me.ButtonSapSourceListRead.ShowImage = True
+        '
+        'ButtonSapSourceListUpdate
+        '
+        Me.ButtonSapSourceListUpdate.Image = CType(resources.GetObject("ButtonSapSourceListUpdate.Image"), System.Drawing.Image)
+        Me.ButtonSapSourceListUpdate.Label = "Update Source List"
+        Me.ButtonSapSourceListUpdate.Name = "ButtonSapSourceListUpdate"
+        Me.ButtonSapSourceListUpdate.ShowImage = True
+        '
         'Group2
         '
         Me.Group2.Items.Add(Me.ButtonLogon)
@@ -131,6 +157,8 @@
         Me.Group1.PerformLayout()
         Me.Group3.ResumeLayout(False)
         Me.Group3.PerformLayout()
+        Me.Group4.ResumeLayout(False)
+        Me.Group4.PerformLayout()
         Me.Group2.ResumeLayout(False)
         Me.Group2.PerformLayout()
         Me.ResumeLayout(False)
@@ -146,6 +174,9 @@
     Friend WithEvents ButtonSapMaterialGetAll As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group3 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents ButtonSapMaterialPriceChange As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group4 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents ButtonSapSourceListRead As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents ButtonSapSourceListUpdate As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

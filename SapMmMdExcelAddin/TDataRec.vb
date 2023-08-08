@@ -147,15 +147,22 @@ Public Class TDataRec
 
     Public Sub toRange(pFields() As String, pIsValue() As String, ByRef aRange As Excel.Range)
         Dim aTStrRec As SAPCommon.TStrRec
+        Dim aStructures() As String
+        Dim aStrucName() As String
         For i = 0 To pFields.Count - 1
-            If aTDataRecCol.Contains(pFields(i)) Then
-                aTStrRec = aTDataRecCol(pFields(i))
-                If pIsValue(i) = "X" Then
-                    aRange(1, i + 1).Value = CDbl(aTStrRec.formated())
-                Else
-                    aRange(1, i + 1).Value = CStr(aTStrRec.formated())
+            aStructures = Split(pFields(i), "-")
+            aStrucName = Split(aStructures(0), "+")
+            For s = 0 To aStrucName.Count - 1
+                Dim aField = aStrucName(s) + "-" + aStructures(1)
+                If aTDataRecCol.Contains(aField) Then
+                    aTStrRec = aTDataRecCol(aField)
+                    If pIsValue(i) = "X" Then
+                        aRange(1, i + 1).Value = CDbl(aTStrRec.formated())
+                    Else
+                        aRange(1, i + 1).Value = CStr(aTStrRec.formated())
+                    End If
                 End If
-            End If
+            Next
         Next
     End Sub
 

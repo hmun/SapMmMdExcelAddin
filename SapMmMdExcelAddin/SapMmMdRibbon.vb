@@ -115,4 +115,21 @@ Public Class SapMmMdRibbon
         End If
     End Sub
 
+    Private Sub ButtonSapSourceListRead_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonSapSourceListRead.Click
+        Dim aSapMmMdRibbon_SL As New SapMmMdRibbon_SL
+        If checkCon() = True Then
+            aSapMmMdRibbon_SL.Read(pSapCon:=aSapCon)
+        Else
+            MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapSourceListRead_Click")
+        End If
+    End Sub
+
+    Private Sub ButtonSapSourceListUpdate_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonSapSourceListUpdate.Click
+        Dim aSapMmMdRibbon_SL As New SapMmMdRibbon_SL
+        If checkCon() = True Then
+            aSapMmMdRibbon_SL.Update(pSapCon:=aSapCon)
+        Else
+            MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapSourceListUpdate_Click")
+        End If
+    End Sub
 End Class
