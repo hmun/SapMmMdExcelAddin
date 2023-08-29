@@ -153,7 +153,12 @@ Public Class TDataRec
             aStructures = Split(pFields(i), "-")
             aStrucName = Split(aStructures(0), "+")
             For s = 0 To aStrucName.Count - 1
-                Dim aField = aStrucName(s) + "-" + aStructures(1)
+                Dim aField As String
+                If aStructures.Count = 2 Then
+                    aField = aStrucName(s) + "-" + aStructures(1)
+                Else
+                    aField = aStrucName(s)
+                End If
                 If aTDataRecCol.Contains(aField) Then
                     aTStrRec = aTDataRecCol(aField)
                     If pIsValue(i) = "X" Then
