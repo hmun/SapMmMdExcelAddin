@@ -250,7 +250,7 @@ Public Class SAPMaterial
                 pData.aDataDic.addValues(oTable:=oUNITSOFMEASURE, pStrucName:="UNITSOFMEASURE")
                 pData.aDataDic.addValues(oTable:=oINTERNATIONALARTNOS, pStrucName:="INTERNATIONALARTNOS")
                 pData.aDataDic.addValues(oTable:=oMATERIALLONGTEXT, pStrucName:="MATERIALLONGTEXT")
-                pData.aDataDic.addValues(oTable:=oTAXCLASSIFICATIONS, pStrucName:="TAXCLASSIFICATIONS ")
+                pData.aDataDic.addValues(oTable:=oTAXCLASSIFICATIONS, pStrucName:="TAXCLASSIFICATIONS")
                 '                pData.aDataDic.addValues(oTable:=oNFMCHARGEWEIGHTS, pStrucName:="NFMCHARGEWEIGHTS")
                 '                pData.aDataDic.addValues(oTable:=oNFMSTRUCTURALWEIGHTS, pStrucName:="NFMSTRUCTURALWEIGHTS")
                 pData.aDataDic.addValues(oTable:=oEXTENSIONOUT, pStrucName:="EXTENSIONOUT")

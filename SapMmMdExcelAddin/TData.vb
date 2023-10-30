@@ -184,6 +184,7 @@ Public Class TData
 
     Public Function getFieldArray(ByRef pWs As Excel.Worksheet, ByRef pFieldArray() As String, ByRef pIsValueArray() As String, pCoff As Integer) As ULong
         ' read the header fields
+        Dim aUseOutasIn As String = If(aPar.value("EXT", "USEOU") <> "", aPar.value("EXT", "USEOU"), "X")
         Dim j As UInt64 = pCoff + 1
         pFieldArray = {}
         Do
@@ -191,8 +192,10 @@ Public Class TData
             pIsValueArray(pIsValueArray.Length - 1) = CStr(pWs.Cells(2, j).value)
             Array.Resize(pFieldArray, pFieldArray.Length + 1)
             pFieldArray(pFieldArray.Length - 1) = CStr(pWs.Cells(1, j).value)
+            If aUseOutasIn = "X" Then
+                pFieldArray(pFieldArray.Length - 1) = pFieldArray(pFieldArray.Length - 1).Replace("EXTENSIONIN", "EXTENSIONOUT")
+            End If
             pFieldArray(pFieldArray.Length - 1) = pFieldArray(pFieldArray.Length - 1).Replace("HEADDATA", "CLIENTDATA")
-            pFieldArray(pFieldArray.Length - 1) = pFieldArray(pFieldArray.Length - 1).Replace("EXTENSIONIN", "EXTENSIONOUT")
             j += 1
         Loop While Not String.IsNullOrEmpty(pWs.Cells(1, j).value)
         aFieldArray = pFieldArray

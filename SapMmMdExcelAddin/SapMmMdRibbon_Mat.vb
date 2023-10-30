@@ -79,6 +79,7 @@ Public Class SapMmMdRibbon_Mat
 
         Dim jMax As UInt64 = 0
         Dim aMatLOff As Integer = If(aIntPar.value("LOFF", "MAT_DATA") <> "", CInt(aIntPar.value("LOFF", "MAT_DATA")), 4)
+        Dim aHdrLOff As Integer = If(aIntPar.value("LOFF", "MAT_HOFF") <> "", CInt(aIntPar.value("LOFF", "MAT_HOFF")), aMatLOff - 3)
         Dim aMatWsName As String = If(aIntPar.value("WS", "MAT_DATA") <> "", aIntPar.value("WS", "MAT_DATA"), "Data")
         Dim aMatWs As Excel.Worksheet
         Dim aMsgClmn As String = If(aIntPar.value("COL", "DATAMSG") <> "", aIntPar.value("COL", "DATAMSG"), "INT-MSG")
@@ -97,7 +98,7 @@ Public Class SapMmMdRibbon_Mat
                    MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "SAP Materal")
             Exit Sub
         End Try
-        parseHeaderLine(aMatWs, jMax, aMsgClmn, aMsgClmnNr, pHdrLine:=aMatLOff - 3)
+        parseHeaderLine(aMatWs, jMax, aMsgClmn, aMsgClmnNr, pHdrLine:=aHdrLOff)
         Try
             log.Debug("SapMmMdRibbon_Mat.Change - " & "processing data - disabling events, screen update, cursor")
             Globals.SapMmMdExcelAddin.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait
@@ -213,6 +214,7 @@ Public Class SapMmMdRibbon_Mat
         Dim jMax As UInt64 = 0
         Dim aMLiLOff As Integer = If(aIntPar.value("LOFF", "MAT_LIST") <> "", CInt(aIntPar.value("LOFF", "MAT_LIST")), 4)
         Dim aMatLOff As Integer = If(aIntPar.value("LOFF", "MAT_DATA") <> "", CInt(aIntPar.value("LOFF", "MAT_DATA")), 4)
+        Dim aHdrLOff As Integer = If(aIntPar.value("LOFF", "MAT_HOFF") <> "", CInt(aIntPar.value("LOFF", "MAT_HOFF")), aMatLOff - 3)
         Dim aMLiWsName As String = If(aIntPar.value("WS", "MAT_LIST") <> "", aIntPar.value("WS", "MAT_LIST"), "Material_List")
         Dim aMatWsName As String = If(aIntPar.value("WS", "MAT_DATA") <> "", aIntPar.value("WS", "MAT_DATA"), "Data")
         Dim aMatWs As Excel.Worksheet
@@ -239,7 +241,7 @@ Public Class SapMmMdRibbon_Mat
                    MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "SAP Materal")
             Exit Sub
         End Try
-        parseHeaderLine(aMLiWs, jMax, aMsgClmn, aMsgClmnNr, pHdrLine:=aMatLOff - 3)
+        parseHeaderLine(aMLiWs, jMax, aMsgClmn, aMsgClmnNr, pHdrLine:=aHdrLOff)
         Try
             log.Debug("SapMmMdRibbon_Mat.GetAll - " & "processing data - disabling events, screen update, cursor")
             Globals.SapMmMdExcelAddin.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait
