@@ -227,7 +227,7 @@ Public Class SapMmMdRibbon_SL
                             ' output tables
                             iOutOffset = aTSAP_SourceListData.ws_output(pStructure:="ET_EORD", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aSLWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:=aMLiItem.getMaterial().Value)
                             iOutOffsetMax = If(iOutOffset > iOutOffsetMax, iOutOffset, iOutOffsetMax)
-                            iOutOffsetMax = If(iOutOffsetMax = 0, 1, iOutOffsetMax)
+                            ' iOutOffsetMax = If(iOutOffsetMax = 0, 1, iOutOffsetMax)
                             iOut += iOutOffsetMax
                         End If
                     End If

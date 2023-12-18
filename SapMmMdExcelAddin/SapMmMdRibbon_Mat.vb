@@ -285,6 +285,7 @@ Public Class SapMmMdRibbon_Mat
                             aTSAP_MatData.ws_output_line(pStructure:="PLANTDATA", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")
                             aTSAP_MatData.ws_output_line(pStructure:="FORECASTPARAMETERS", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")
                             aTSAP_MatData.ws_output_line(pStructure:="PLANNINGDATA", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")
+                            aTSAP_MatData.ws_output_line(pStructure:="STORAGELOCATIONDATA", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")
                             aTSAP_MatData.ws_output_line(pStructure:="VALUATIONDATA", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")
                             aTSAP_MatData.ws_output_line(pStructure:="WAREHOUSENUMBERDATA", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")
                             aTSAP_MatData.ws_output_line(pStructure:="SALESDATA", pFieldArray:=aFieldArray, pIsValueArray:=aIsValueArray, pWs:=aMatWs, pDataKey:="", i:=iOut, jMax:=jMaxOut, pClear:=aClear, pKey:="")

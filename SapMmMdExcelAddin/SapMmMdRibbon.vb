@@ -2,6 +2,9 @@
 ' This file is licensed under the terms of the license 'CC BY 4.0'. 
 ' For a human readable version of the license, see https://creativecommons.org/licenses/by/4.0/
 
+Imports System.Collections.Specialized
+Imports System.Configuration
+Imports System.Net.PeerToPeer.Collaboration
 Imports Microsoft.Office.Tools.Ribbon
 
 Public Class SapMmMdRibbon
@@ -13,7 +16,20 @@ Public Class SapMmMdRibbon
     Private Shared ReadOnly log As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
     Private Sub SapMmMdRibbon_Load(ByVal sender As System.Object, ByVal e As RibbonUIEventArgs) Handles MyBase.Load
+        Dim enableSourceList As Boolean = False
+        Dim enableRouting As Boolean = False
+        Dim enablePriceChange As Boolean = False
         aSapGeneral = New SapGeneral
+        Try
+            enableSourceList = Convert.ToBoolean(ConfigurationManager.AppSettings("enableSourceList"))
+            enableRouting = Convert.ToBoolean(ConfigurationManager.AppSettings("enableRouting"))
+            enablePriceChange = Convert.ToBoolean(ConfigurationManager.AppSettings("enablePriceChange"))
+        Catch Exc As System.Exception
+            log.Error("SapAccRibbon_Load - " & "Exception=" & Exc.ToString)
+        End Try
+        Globals.Ribbons.Ribbon1.GroupSourceList.Visible = enableSourceList
+        Globals.Ribbons.Ribbon1.GroupRouting.Visible = enableRouting
+        Globals.Ribbons.Ribbon1.GroupMaterialPrice.Visible = enablePriceChange
     End Sub
 
     Private Function checkCon() As Integer
@@ -130,6 +146,24 @@ Public Class SapMmMdRibbon
             aSapMmMdRibbon_SL.Update(pSapCon:=aSapCon)
         Else
             MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapSourceListUpdate_Click")
+        End If
+    End Sub
+
+    Private Sub ButtonSapRoutingCreate_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonSapRoutingCreate.Click
+        Dim aSapMmMdRibbon_Routing As New SapMmMdRibbon_Routing
+        If checkCon() = True Then
+            aSapMmMdRibbon_Routing.Maintain(pSapCon:=aSapCon, pMode:="create")
+        Else
+            MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapRoutingCreate_Click")
+        End If
+    End Sub
+
+    Private Sub ButtonSapRoutingChange_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonSapRoutingChange.Click
+        Dim aSapMmMdRibbon_Routing As New SapMmMdRibbon_Routing
+        If checkCon() = True Then
+            aSapMmMdRibbon_Routing.Maintain(pSapCon:=aSapCon, pMode:="change")
+        Else
+            MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapRoutingChange_Click")
         End If
     End Sub
 End Class
