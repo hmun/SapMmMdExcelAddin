@@ -19,17 +19,20 @@ Public Class SapMmMdRibbon
         Dim enableSourceList As Boolean = False
         Dim enableRouting As Boolean = False
         Dim enablePriceChange As Boolean = False
+        Dim enableGoodsMovement As Boolean = False
         aSapGeneral = New SapGeneral
         Try
             enableSourceList = Convert.ToBoolean(ConfigurationManager.AppSettings("enableSourceList"))
             enableRouting = Convert.ToBoolean(ConfigurationManager.AppSettings("enableRouting"))
             enablePriceChange = Convert.ToBoolean(ConfigurationManager.AppSettings("enablePriceChange"))
+            enableGoodsMovement = Convert.ToBoolean(ConfigurationManager.AppSettings("enableGoodsMovement"))
         Catch Exc As System.Exception
             log.Error("SapAccRibbon_Load - " & "Exception=" & Exc.ToString)
         End Try
         Globals.Ribbons.Ribbon1.GroupSourceList.Visible = enableSourceList
         Globals.Ribbons.Ribbon1.GroupRouting.Visible = enableRouting
         Globals.Ribbons.Ribbon1.GroupMaterialPrice.Visible = enablePriceChange
+        Globals.Ribbons.Ribbon1.GroupGoodsMovement.Visible = enableGoodsMovement
     End Sub
 
     Private Function checkCon() As Integer
@@ -164,6 +167,15 @@ Public Class SapMmMdRibbon
             aSapMmMdRibbon_Routing.Maintain(pSapCon:=aSapCon, pMode:="change")
         Else
             MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapRoutingChange_Click")
+        End If
+    End Sub
+
+    Private Sub ButtonSapGoodsMovementCreate_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonSapGoodsMovementCreate.Click
+        Dim aSapMmMdRibbon_GoodsMovement As New SapMmMdRibbon_GoodsMovement
+        If checkCon() = True Then
+            aSapMmMdRibbon_GoodsMovement.Maintain(pSapCon:=aSapCon, pMode:="create")
+        Else
+            MsgBox("Checking SAP-Connection failed!", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Sap ButtonSapGoodsMovementCreate_Click")
         End If
     End Sub
 End Class

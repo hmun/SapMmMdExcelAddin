@@ -57,12 +57,15 @@
         Me.GroupSAPLogon = Me.Factory.CreateRibbonGroup
         Me.ButtonLogon = Me.Factory.CreateRibbonButton
         Me.ButtonLogoff = Me.Factory.CreateRibbonButton
+        Me.GroupGoodsMovement = Me.Factory.CreateRibbonGroup
+        Me.ButtonSapGoodsMovementCreate = Me.Factory.CreateRibbonButton
         Me.SapMmMd.SuspendLayout()
         Me.GroupMaterialMaster.SuspendLayout()
         Me.GroupMaterialPrice.SuspendLayout()
         Me.GroupSourceList.SuspendLayout()
         Me.GroupRouting.SuspendLayout()
         Me.GroupSAPLogon.SuspendLayout()
+        Me.GroupGoodsMovement.SuspendLayout()
         Me.SuspendLayout()
         '
         'SapMmMd
@@ -71,6 +74,7 @@
         Me.SapMmMd.Groups.Add(Me.GroupMaterialPrice)
         Me.SapMmMd.Groups.Add(Me.GroupSourceList)
         Me.SapMmMd.Groups.Add(Me.GroupRouting)
+        Me.SapMmMd.Groups.Add(Me.GroupGoodsMovement)
         Me.SapMmMd.Groups.Add(Me.GroupSAPLogon)
         Me.SapMmMd.Label = "SAP MM Md"
         Me.SapMmMd.Name = "SapMmMd"
@@ -172,6 +176,19 @@
         Me.ButtonLogoff.Name = "ButtonLogoff"
         Me.ButtonLogoff.ShowImage = True
         '
+        'GroupGoodsMovement
+        '
+        Me.GroupGoodsMovement.Items.Add(Me.ButtonSapGoodsMovementCreate)
+        Me.GroupGoodsMovement.Label = "Goods Movement"
+        Me.GroupGoodsMovement.Name = "GroupGoodsMovement"
+        '
+        'ButtonSapGoodsMovementCreate
+        '
+        Me.ButtonSapGoodsMovementCreate.Image = CType(resources.GetObject("ButtonSapGoodsMovementCreate.Image"), System.Drawing.Image)
+        Me.ButtonSapGoodsMovementCreate.Label = "Create Goods Movement"
+        Me.ButtonSapGoodsMovementCreate.Name = "ButtonSapGoodsMovementCreate"
+        Me.ButtonSapGoodsMovementCreate.ShowImage = True
+        '
         'SapMmMdRibbon
         '
         Me.Name = "SapMmMdRibbon"
@@ -189,6 +206,8 @@
         Me.GroupRouting.PerformLayout()
         Me.GroupSAPLogon.ResumeLayout(False)
         Me.GroupSAPLogon.PerformLayout()
+        Me.GroupGoodsMovement.ResumeLayout(False)
+        Me.GroupGoodsMovement.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -208,6 +227,8 @@
     Friend WithEvents GroupRouting As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents ButtonSapRoutingCreate As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents ButtonSapRoutingChange As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents GroupGoodsMovement As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents ButtonSapGoodsMovementCreate As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
